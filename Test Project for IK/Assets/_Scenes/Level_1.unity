@@ -539,6 +539,10 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1346730164278076, guid: 3f63a764d7919ae41bb9fbefdf943136, type: 2}
+      propertyPath: m_TagString
+      value: Ball
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f63a764d7919ae41bb9fbefdf943136, type: 2}
   m_IsPrefabParent: 0
@@ -1021,6 +1025,10 @@ Prefab:
     - target: {fileID: 4028537540800228, guid: 43678bd471c1bea438937610b9eb6e53, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657220815783700, guid: 43678bd471c1bea438937610b9eb6e53, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43678bd471c1bea438937610b9eb6e53, type: 2}
@@ -1875,7 +1883,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Over!
+  m_Text: You Won!
 --- !u!222 &1296636566
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1971,6 +1979,16 @@ Prefab:
       propertyPath: gWScoreLabel
       value: 
       objectReference: {fileID: 1585113414}
+    - target: {fileID: 114080325712291660, guid: 09f754a6d626ce34491ae9e8d2b1e580,
+        type: 2}
+      propertyPath: scoreIncrementValue
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114080325712291660, guid: 09f754a6d626ce34491ae9e8d2b1e580,
+        type: 2}
+      propertyPath: brickHolder
+      value: 
+      objectReference: {fileID: 950906493}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09f754a6d626ce34491ae9e8d2b1e580, type: 2}
   m_IsPrefabParent: 0

@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager Instance;
 	public bool gameIsOver;
+	public Transform brickHolder;
+
 
 	[SerializeField] float scoreIncrementValue;
 
@@ -21,7 +23,7 @@ public class GameManager : MonoBehaviour {
 
 	private float score;
 	private int lives;
-
+	private int amountOfBlocks;
 
 
 	void Reset() {
@@ -39,16 +41,33 @@ public class GameManager : MonoBehaviour {
 		} else if (Instance != this) {
 			Destroy (gameObject);
 		}
+		amountOfBlocks = brickHolder.childCount;
 	}
 
 	void Start() {
 		lives = 3;
 		livesLabel.text = lives.ToString ();
+		StartCoroutine ("scoreIncrementDecrease");
 	}
 
-	public void IncrementScore() {
+	public void IncrementScoreAndCheckForGW() {
 		score += scoreIncrementValue;
-		scoreLabel.text = score.ToString ("G");
+		scoreLabel.text = score.ToString ("F0");
+		amountOfBlocks--;
+		if (amountOfBlocks == 0) {
+			GameWon ();
+		}
+	}
+
+	IEnumerator scoreIncrementDecrease() {
+		for (;;) {
+			yield return new WaitForSeconds (5f);
+			if (!gameIsOver) {
+				if (scoreIncrementValue >= 500f) {
+					scoreIncrementValue *= 0.98f;
+				}
+			}
+		}
 	}
 
 	public bool BallDropped() {
@@ -58,19 +77,20 @@ public class GameManager : MonoBehaviour {
 		if (lives > 0) {
 			return true;
 		} else {
+			GameOver ();
 			return false;
 		}
 	}
 
 	public void GameOver() {
 		Time.timeScale = 0;
-		gOScoreLabel.text = score.ToString ("D");
+		gOScoreLabel.text = score.ToString ("F0");
 		GameOverPanel.SetActive (true);
 	}
 
 	public void GameWon() {
 		Time.timeScale = 0;
-		gWScoreLabel.text = score.ToString ("D");
+		gWScoreLabel.text = score.ToString ("F0");
 		GameWonPanel.SetActive (true);
 
 	}
