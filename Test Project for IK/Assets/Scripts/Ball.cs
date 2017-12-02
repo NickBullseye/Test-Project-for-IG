@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 
-	public Transform player;
 	public float launchAngle = 2f;
 	public float launchSpeed = 10f;
 
+	private Transform player;
 	private Rigidbody2D rb2d;
 	private bool isLaunched = false;
 	private Vector3 ballToPlayerVector;
 
 	void Awake() {
 		rb2d = GetComponent<Rigidbody2D> ();
+		player = GameObject.FindGameObjectWithTag ("Player").transform;
+		this.transform.position = new Vector2 (player.transform.position.x, transform.position.y);
 	}
 
 	void Start () {
+		//stores basic distance from ball to player
 		ballToPlayerVector = this.transform.position - player.position;
 	}
 	
@@ -32,6 +35,7 @@ public class Ball : MonoBehaviour {
 	}
 
 	public void ResetBall() {
+		//resets ball when lost
 		rb2d.velocity = Vector2.zero;
 		isLaunched = false;
 	}

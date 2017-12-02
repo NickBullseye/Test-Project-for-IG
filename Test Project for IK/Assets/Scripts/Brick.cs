@@ -6,6 +6,7 @@ public class Brick : MonoBehaviour {
 
 
 	public int hitsToBreak;
+	public bool bonusBrick;
 
 	private int timesHit = 0;
 	private SpriteRenderer sprR;
@@ -20,6 +21,9 @@ public class Brick : MonoBehaviour {
 		switch (hitsLeft) {
 		case 0:
 			GameManager.Instance.IncrementScoreAndCheckForGW ();
+			if (bonusBrick) {
+				GameManager.Instance.SpawnBonus (this.transform);
+			}
 			Destroy (gameObject);
 			break;
 		case 1:

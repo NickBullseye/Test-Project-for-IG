@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance;
 	public bool gameIsOver;
 	public Transform brickHolder;
+	public int amountOfBallsLive;
+
+	[Header("Prefabs")]
+	public GameObject ballPrefab;
+	public List<GameObject> bonuses = new List<GameObject>();
 
 
 	[SerializeField] float scoreIncrementValue;
@@ -21,6 +26,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] Text gOScoreLabel;
 	[SerializeField] Text gWScoreLabel;
 
+	private GameObject player;
 	private float score;
 	private int lives;
 	private int amountOfBlocks;
@@ -42,11 +48,13 @@ public class GameManager : MonoBehaviour {
 			Destroy (gameObject);
 		}
 		amountOfBlocks = brickHolder.childCount;
+		player = GameObject.FindGameObjectWithTag ("Player");
 	}
 
 	void Start() {
 		lives = 3;
 		livesLabel.text = lives.ToString ();
+		amountOfBallsLive = 1;
 		StartCoroutine ("scoreIncrementDecrease");
 	}
 
@@ -60,6 +68,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator scoreIncrementDecrease() {
+		//decreases score gained overtime
 		for (;;) {
 			yield return new WaitForSeconds (5f);
 			if (!gameIsOver) {
@@ -68,6 +77,27 @@ public class GameManager : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	public void SpawnBonus(Transform brickPos) {
+		GameObject bonus = Instantiate (bonuses[Random.Range(0, bonuses.Count)], brickPos);
+		bonus.transform.SetParent (null);
+	}
+
+	public void AddBallPickedUp(Transform playerPos) {
+		amountOfBallsLive++;
+		GameObject ball = Instantiate (ballPrefab, playerPos);
+		ball.transform.SetParent (null);
+		ball.transform.position = new Vector2 (ball.transform.position.x, ball.transform.position.y + 0.5f);
+	}
+
+	public void SpeedUpPickedUp(){
+		Time.timeScale = 2f;
+		Invoke ("SetSpeedToNormal", 10f);
+	}
+
+	public void SetSpeedToNormal() {
+		Time.timeScale = 1f;
 	}
 
 	public bool BallDropped() {
@@ -86,13 +116,14 @@ public class GameManager : MonoBehaviour {
 		Time.timeScale = 0;
 		gOScoreLabel.text = score.ToString ("F0");
 		GameOverPanel.SetActive (true);
+		player.GetComponent<MouseController> ().gameIsOver = true;
 	}
 
 	public void GameWon() {
 		Time.timeScale = 0;
 		gWScoreLabel.text = score.ToString ("F0");
 		GameWonPanel.SetActive (true);
-
+		player.GetComponent<MouseController> ().gameIsOver = true;
 	}
 
 	public void RestartLevel() {
