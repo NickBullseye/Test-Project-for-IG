@@ -188,7 +188,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 60045089}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1479642727}
+        m_MethodName: RestartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &60045089
@@ -534,15 +545,6 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1710053643}
-    - target: {fileID: 212037353521924722, guid: 3f63a764d7919ae41bb9fbefdf943136,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1346730164278076, guid: 3f63a764d7919ae41bb9fbefdf943136, type: 2}
-      propertyPath: m_TagString
-      value: Ball
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f63a764d7919ae41bb9fbefdf943136, type: 2}
   m_IsPrefabParent: 0
@@ -714,7 +716,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 501057893}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1479642727}
+        m_MethodName: RestartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &501057893
@@ -1992,6 +2005,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09f754a6d626ce34491ae9e8d2b1e580, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1479642727 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114080325712291660, guid: 09f754a6d626ce34491ae9e8d2b1e580,
+    type: 2}
+  m_PrefabInternal: {fileID: 1479642726}
+  m_Script: {fileID: 11500000, guid: 7f6f100f671a90a47840ed91fd9414fc, type: 3}
 --- !u!1 &1525944667
 GameObject:
   m_ObjectHideFlags: 0
