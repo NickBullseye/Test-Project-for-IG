@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LoseZone : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.tag == "Ball") {
+			if (GameManager.Instance.BallDropped()) {
+				other.GetComponent<Ball> ().ResetBall ();
+			}
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

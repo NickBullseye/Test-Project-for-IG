@@ -30,4 +30,9 @@ public class Ball : MonoBehaviour {
 			}
 		}
 	}
+
+	public void ResetBall() {
+		rb2d.velocity = Vector2.zero;
+		isLaunched = false;
+	}
 }
